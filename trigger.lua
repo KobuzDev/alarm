@@ -2,6 +2,7 @@ local config = dofile("alarm_config.cfg")
 local modem = peripheral.find("modem") or error("Modem required")
 modem.open(config.trigger_frequency)
 
+term.clear()
 print("---------------------------")
 print("| CIUCCAD SECURITY SYSTEM |")
 print("---------------------------")

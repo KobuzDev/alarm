@@ -22,6 +22,10 @@ if not valid_roles[role] then
     return
 end
 
+print("---------------------------")
+print("| CIUCCAD SECURITY SYSTEM |")
+print("---------------------------")
+
 -- Télécharger le fichier de configuration
 if not fs.exists("alarm_config.cfg") then
     shell.run("wget "..GITHUB_REPO.."alarm_config.cfg alarm_config.cfg")
