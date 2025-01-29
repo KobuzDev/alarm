@@ -1,10 +1,16 @@
 local config = dofile("alarm_config.cfg")
-local modem = peripheral.find("modem") or error("Modem requis!")
+local modem = peripheral.find("modem") or error("Modem required")
 modem.open(config.trigger_frequency)
+
+print("---------------------------")
+print("| CIUCCAD SECURITY SYSTEM |")
+print("---------------------------")
+print("- Trigger ready")
 
 while true do
     local event = os.pullEvent("redstone")
-    if redstone.getInput("front") then
+    if redstone.getInput("back") then
+        print("Alarm activated.")
         modem.transmit(
             config.trigger_frequency,
             config.central_id,

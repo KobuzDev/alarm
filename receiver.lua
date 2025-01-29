@@ -1,8 +1,11 @@
 local config = dofile("alarm_config.cfg")
-local modem = peripheral.find("modem") or error("Modem requis!")
+local modem = peripheral.find("modem") or error("Modem required")
 modem.open(config.receiver_frequency)
 
-print("Récepteur prêt")
+print("---------------------------")
+print("| CIUCCAD SECURITY SYSTEM |")
+print("---------------------------")
+print("- Receiver ready")
 
 while true do
     local _, freq, reply, msg = os.pullEvent("modem_message")

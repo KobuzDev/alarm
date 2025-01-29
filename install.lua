@@ -3,6 +3,9 @@ local GITHUB_REPO = "https://raw.githubusercontent.com/KobuzDev/alarm/main/"
 local role = ({...})[1]
 
 if not role then
+    print("---------------------------")
+    print("| CIUCCAD SECURITY SYSTEM |")
+    print("---------------------------")
     print("Usage: install <role>")
     print("Roles: trigger|central|receiver")
     return
@@ -15,7 +18,7 @@ local valid_roles = {
 }
 
 if not valid_roles[role] then
-    print("Rôle invalide!")
+    print("Invalid role")
     return
 end
 
@@ -28,7 +31,7 @@ end
 local filename = role .. ".lua"
 shell.run("wget "..GITHUB_REPO..filename.." /startup.lua")
 
-print("Installation réussie pour: "..role)
-print("Redémarrage dans 3 secondes...")
+print("Succesfully installed component: "..role)
+print("Rebooting in 3 seconds...")
 sleep(3)
 os.reboot()

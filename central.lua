@@ -5,8 +5,13 @@ local alarmActive = false
 modem.open(config.trigger_frequency)
 modem.open(config.receiver_frequency)
 
-print("Serveur central actif!")
-print("Appuyez sur Entrée pour désactiver")
+modem.transmit(config.receiver_frequency,0,{key = config.secret_key, cmd = "stop"})
+
+term.clear()
+print("---------------------------")
+print("| CIUCCAD SECURITY SYSTEM |")
+print("---------------------------")
+print("- Security server ready")
 
 parallel.waitForAny(
 function()
@@ -21,7 +26,12 @@ function()
                     0, -- Broadcast
                     {key = config.secret_key, cmd = "activate"}
                 )
-                print("Alarme activée!")
+                term.clear()
+                term.setBackgroundColor(colors.red)
+                print("----------------------------------")
+                print("SECURITY ALERT ENABLED")
+                print("Press any key to reboot security system")
+                print("----------------------------------")
             end
         end
     end
@@ -29,8 +39,9 @@ end,
 
 function()
     while true do
-        local event = os.pullEvent("key")
-        if event[1] == "key" and event[2] == 28 then -- Touche Entrée
+        local _, event = os.pullEvent("key")
+        print(event)
+        if _ == "key" then -- Touche Entrée
             if alarmActive then
                 modem.transmit(
                     config.receiver_frequency,
@@ -38,7 +49,9 @@ function()
                     {key = config.secret_key, cmd = "stop"}
                 )
                 alarmActive = false
-                print("Alarme désactivée")
+                print("Rebooting")
+                sleep(1)
+                os.reboot()
             end
         end
     end
