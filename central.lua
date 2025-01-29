@@ -12,6 +12,7 @@ parallel.waitForAny(
 function()
     while true do
         local _, freq, reply, msg = os.pullEvent("modem_message")
+        print(freq)
         if freq == config.trigger_frequency and msg.key == config.secret_key then
             if msg.cmd == "activate" and not alarmActive then
                 alarmActive = true
