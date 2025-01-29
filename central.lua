@@ -12,7 +12,7 @@ term.setCursorPos(1,1)
 print("---------------------------")
 print("| CIUCCAD SECURITY SYSTEM |")
 print("---------------------------")
-print("- " + config.alarm_name " ready")
+print("- Security system ready")
 
 parallel.waitForAny(
 function()
