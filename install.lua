@@ -22,6 +22,7 @@ if not valid_roles[role] then
     return
 end
 
+
 print("---------------------------")
 print("| CIUCCAD SECURITY SYSTEM |")
 print("---------------------------")

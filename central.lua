@@ -8,10 +8,11 @@ modem.open(config.receiver_frequency)
 modem.transmit(config.receiver_frequency,0,{key = config.secret_key, cmd = "stop"})
 
 term.clear()
+term.setCursorPos(1,1)
 print("---------------------------")
 print("| CIUCCAD SECURITY SYSTEM |")
 print("---------------------------")
-print("- Security server ready")
+print("- " + config.alarm_name " ready")
 
 parallel.waitForAny(
 function()
@@ -28,6 +29,7 @@ function()
                 )
                 term.clear()
                 term.setBackgroundColor(colors.red)
+                term.setCursorPos(1,9)
                 print("----------------------------------")
                 print("SECURITY ALERT ENABLED")
                 print("Press any key to reboot security system")
@@ -40,7 +42,6 @@ end,
 function()
     while true do
         local _, event = os.pullEvent("key")
-        print(event)
         if _ == "key" then -- Touche Entrée
             if alarmActive then
                 modem.transmit(

@@ -3,6 +3,7 @@ local modem = peripheral.find("modem") or error("Modem required")
 modem.open(config.trigger_frequency)
 
 term.clear()
+term.setCursorPos(1,1)
 print("---------------------------")
 print("| CIUCCAD SECURITY SYSTEM |")
 print("---------------------------")
