@@ -3,8 +3,8 @@ local modem = peripheral.find("modem") or error("Modem requis!")
 modem.open(config.trigger_frequency)
 
 while true do
-    local event, side = os.pullEvent("redstone")
-    if redstone.getInput(side) then
+    local event = os.pullEvent("redstone")
+    if redstone.getInput("front") then
         modem.transmit(
             config.trigger_frequency,
             config.central_id,
